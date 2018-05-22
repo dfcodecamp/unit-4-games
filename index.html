@@ -1,0 +1,139 @@
+<!doc <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Crystal Home Darryl Forgenie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ 
+
+    <!-- Added link to the jQuery Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Added a link to Bootstrap-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <!-- Result Panel -->
+    <div class="col-lg-6">
+       <h3 class="crystalGame"> Cystals Game</h3><br>
+        <div class="Score Borad">
+         <div id="randomNumber">
+          <br>
+          <h3 class"">Number you need to win</h3><span id="rand"></span>
+          <h3 class"">Your Total</h3><span id="uTotal"></span>
+          <h3 class="">My Score Wins</h3><span id="myScorew"></span>
+          <h3 class="">My Score Loses</h3><span id="myScorel"></span>
+          
+          <br>
+          
+            <hr>
+        
+          </div>
+        </div>
+      </div>
+
+<
+    <div class="crystals">
+   
+
+        <div class="crystalButtons">
+        <img src="c1.jpg" alt="Crystals" id="b11" class="btn img-rounded" value=2>
+        <img src="c2.jpg" alt="Crystals" id="b22" class="btn img-rounded" value=5>
+        <img src="c3.jpg" alt="Crystals" id="b33" class="btn img-rounded" value=8>
+        <img src="c4.jpg" alt="Crystals" id="44"  class="btn img-rounded" value=1>
+          
+          <br><br>
+
+</div>
+      </div>
+
+
+
+<script type="text/javascript">
+ // This "document.ready" code isn't necessary in this example... but is useful to become familiar with.
+    // "document.ready" makes sure that our JavaScript doesn't get run until the HTML document is finished loading.
+$(document).ready(function() {
+ 
+ 
+var compuNum = Math.floor((Math.random() * 100) + 1);
+var i= 0;
+var crystalValue = 0;
+var userTotal= 0;
+var crystalValInt =0;
+var myScore=0;
+var loses=0;
+$("#rand").text(compuNum);
+
+function randomNums()
+{
+
+compuNum = Math.floor((Math.random() * 100) + 1);
+$("#b11").attr("value",Math.floor((Math.random() * 10) + 1));
+$("#b22").attr("value",Math.floor((Math.random() * 10) + 1));  
+$("#b33").attr("value",Math.floor((Math.random() * 10) + 1));    
+$("#b44").attr("value",Math.floor((Math.random() * 10) + 1));  
+$("#rand").text(compuNum); 
+}  
+        $(".btn").on("click", function() 
+        {   
+            
+        crystalValue = $(this).attr("value") 
+        crystalValInt = parseInt(crystalValue);
+        userTotal = crystalValInt + userTotal;
+        console.log("userTotal is ", userTotal);
+        console.log("compuNum is random " ,compuNum);
+        $("#uTotal").text(userTotal);
+             
+               
+        $("#myScorew").text(myScore);
+        $("#myScorel").text(loses);
+        
+
+        //console.log(myScore);
+        
+            if (userTotal === compuNum)
+            {
+                alert("OMG! You  Won");
+                myScore = myScore +1;
+                compuNum = Math.floor((Math.random() * 100) + 1);
+              
+                crystalValue=0;
+                userTotal=0;
+                $("#myScorew").text(myScore);
+               
+                randomNums();
+                
+            
+            }
+            else if (userTotal > compuNum)
+            {
+                alert("OMG! You Lost");
+                crystalValue=0;
+                userTotal=0;
+                loses=loses+1;
+                $("#myScorel").text(loses);
+                randomNums();
+
+            }
+       
+        });
+
+    
+
+});
+
+//document.write("Here's a tofu stir fry!");
+//alert("OMG! I love them too!");
+
+
+
+
+</script>
+
+</body>
+
+</html>
